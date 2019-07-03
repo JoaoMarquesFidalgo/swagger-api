@@ -1,0 +1,51 @@
+use hackathon;
+
+// old
+db.wind.insert([
+    {
+        "coordinates": [40.62348937957055, -8.664076232910134],
+        "wind_speed": 21,
+        "air_density": 1.2250,
+
+    },
+    {
+        "coordinates": [40.7143528, -74.0059731],
+        "wind_speed": 50,
+        "air_density": 1.400
+    },
+    {
+        "coordinates": [35.000074, 104.999927],
+        "wind_speed": 10,
+        "air_density": 1.3943
+    }
+])
+
+db.wind.insert([
+    {
+        "coordinates": [40.62348937957055, -8.664076232910134],
+        "kwp": 261
+    },
+    {
+        "coordinates": [40.7143528, -74.0059731],
+        "kwp": 100
+    },
+    {
+        "coordinates": [35.000074, 104.999927],
+        "potency": 150
+    }
+])
+
+db.solar.insert([
+    {
+        "coordinates": [40.62348937957055, -8.664076232910134],
+        "anual_avg_rad": 1000
+    },
+    {
+        "coordinates": [40.7143528, -74.0059731],
+        "anual_avg_rad": 1250
+    },
+    {
+        "coordinates": [35.000074, 104.999927],
+        "anual_avg_rad": 1300
+    }
+])

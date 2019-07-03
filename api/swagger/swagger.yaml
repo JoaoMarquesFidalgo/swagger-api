@@ -1,0 +1,74 @@
+swagger: "2.0"
+info:
+  version: "0.5.0"
+  title: API Swagger UI for Hackathon
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths
+basePath: /api
+#
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /calc:
+    x-swagger-router-controller: calc
+    get:
+      operationId: getCalc
+      parameters:
+        - in: query
+          name: type
+          type: string
+          required: true
+          enum: ['wind', 'solar']
+        - in: query
+          name: lat
+          type: number
+          required: true
+        - in: query
+          name: lon
+          type: number
+          required: true
+        - in: query
+          name: diameterTurbineWind
+          type: number
+          default: 1
+          required: false
+        - in: query
+          name: efficiencyWind
+          type: number
+          default: 100
+          required: false
+        - in: query
+          name: kwp
+          type: number
+          default: 1
+          required: false
+      responses:
+        "200":
+          description: If the error property is true, there was an error, if not everything went fine.
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+definitions:
+  GeneralResponse:
+    type: object
+    properties:
+      error:
+        type: boolean
+        description: Return false if there isn't an error or true if there is an error
+      description:
+        type: string
+        description: error or success message
+      data:
+        type: object
+        description: data of the project
+    required:
+      - error
+      - description

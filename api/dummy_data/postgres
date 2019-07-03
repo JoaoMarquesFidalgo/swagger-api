@@ -1,0 +1,19 @@
+psql postgres
+CREATE ROLE team1 WITH LOGIN PASSWORD '1234';
+ALTER ROLE me CREATEDB;
+\q
+psql -d postgres -U team1
+CREATE DATABASE hackathon;
+\c hackathon
+CREATE TABLE wind (
+  ID SERIAL PRIMARY KEY,
+  coordinates integer[],
+  kwp integer
+);
+CREATE TABLE solar (
+  ID SERIAL PRIMARY KEY,
+  coordinates integer[],
+  anual_radiation integer
+);
+INSERT INTO wind (coordinates, kwp)
+  VALUES ([40.62348937957055, -8.664076232910134], 261), ([40.7143528, -74.0059731], 150), ([35.000074, 104.999927], 200);
